@@ -47,12 +47,12 @@ class Order(models.Model):
     paidAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     isDelivered = models.BooleanField(default=False)
     deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
-    createdAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    createdAt = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     _id = models.AutoField(primary_key=True, editable=False)
 
     def __str__(self) -> str:
-        return str(self.createdAt)
-    
+        return str(self._id) + "-" + str(self.createdAt)
+
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
@@ -81,3 +81,4 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return str(self.address)
+    
