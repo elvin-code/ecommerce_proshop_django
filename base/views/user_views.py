@@ -114,5 +114,3 @@ def deleteUser(request, pk):
         return Response('User not exist', status=status.HTTP_400_BAD_REQUEST)
     
     return Response('User was deleted')
-
-
